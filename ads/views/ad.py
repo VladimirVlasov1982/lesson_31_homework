@@ -6,7 +6,6 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
 from ads.models import Ads
 from ads.permissions import IsOwnerAdOrStaff
 from ads.serializers.ad import AdsListSerializer, AdsDetailSeraializer, AdsCreateSerializer, AdsUpdateSerializer, \

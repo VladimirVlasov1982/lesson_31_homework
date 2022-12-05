@@ -4,6 +4,8 @@ from users.models import User
 
 
 class CategoriesFactory(factory.django.DjangoModelFactory):
+    """Фабрика для категории"""
+
     class Meta:
         model = Categories
 
@@ -11,6 +13,8 @@ class CategoriesFactory(factory.django.DjangoModelFactory):
 
 
 class UserFactory(factory.django.DjangoModelFactory):
+    """Фабрика для пользователя"""
+
     class Meta:
         model = User
 
@@ -21,6 +25,8 @@ class UserFactory(factory.django.DjangoModelFactory):
 
 
 class AdsFactory(factory.django.DjangoModelFactory):
+    """Фабрика для объявлений"""
+
     class Meta:
         model = Ads
 
@@ -33,6 +39,8 @@ class AdsFactory(factory.django.DjangoModelFactory):
 
 
 class SelectionsFactory(factory.django.DjangoModelFactory):
+    """Фабрика для подборки"""
+
     class Meta:
         model = Selection
 

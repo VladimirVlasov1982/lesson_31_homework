@@ -4,9 +4,9 @@ import pytest
 @pytest.fixture
 @pytest.mark.django_db
 def access_token(client, django_user_model):
+    # Получение доступа
     username = "test1"
     password = "123qwe"
-
 
     django_user_model.objects.create_user(
         username=username,
