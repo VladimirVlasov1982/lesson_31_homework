@@ -7,6 +7,7 @@
       "last_name": "Никифоров",
       "username": "pnikifirov",
       "password": "gZvptL",
+      "email": "test1@mail.ru",
       "role": "member",
       "age": "21",
       "location_id": [
@@ -22,6 +23,7 @@
       "last_name": "Игнатьева",
       "username": "abiba_1341",
       "password": "4fVqL2",
+      "email": "test2@mail.ru",
       "role": "moderator",
       "age": "24",
       "location_id": [
@@ -37,6 +39,7 @@
       "last_name": "Сысоев",
       "username": "vanya777",
       "password": "o535pj",
+      "email": "test3@mail.ru",
       "role": "admin",
       "age": "29",
       "location_id": [
@@ -52,6 +55,7 @@
       "last_name": "Беркутова",
       "username": "orlanfree",
       "password": "d49rSO",
+      "email": "test4@mail.ru",
       "role": "moderator",
       "age": "19",
       "location_id": [
@@ -67,6 +71,7 @@
       "last_name": "Иванова",
       "username": "galina_ivanova",
       "password": "wCqlVE",
+      "email": "test5@mail.ru",
       "role": "member",
       "age": "41",
       "location_id": [
@@ -82,6 +87,7 @@
       "last_name": "Бойченко",
       "username": "petr_bo",
       "password": "xuR2jf",
+      "email": "test6@mail.ru",
       "role": "member",
       "age": "37",
       "location_id": [
@@ -97,6 +103,7 @@
       "last_name": "",
       "username": "nikitapro",
       "password": "gzP4vR",
+      "email": "test7@mail.ru",
       "role": "member",
       "age": "26",
       "location_id": [
@@ -112,6 +119,7 @@
       "last_name": "Петушок",
       "username": "riverna",
       "password": "zo0rj6",
+      "email": "test8@mail.ru",
       "role": "member",
       "age": "24",
       "location_id": [
@@ -127,6 +135,7 @@
       "last_name": "Ибрагимова",
       "username": "gulnara321",
       "password": "daMocL",
+      "email": "test9@mail.ru",
       "role": "moderator",
       "age": "22",
       "location_id": [
@@ -142,6 +151,7 @@
       "last_name": "Зайка",
       "username": "dragon84",
       "password": "sasha123456",
+      "email": "test10@mail.ru",
       "role": "member",
       "age": "35",
       "location_id": [

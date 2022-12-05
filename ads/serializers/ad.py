@@ -51,6 +51,11 @@ class AdsCreateSerializer(serializers.ModelSerializer):
         slug_field="pk",
     )
 
+    def validate_is_published(self, value):
+        if value == True:
+            raise serializers.ValidationError("Значение поля is_published должно быть false")
+        return value
+
     class Meta:
         model = Ads
         fields = "__all__"

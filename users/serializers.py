@@ -1,6 +1,9 @@
+from datetime import date
 from django.db.models import Count, Q
 from rest_framework import serializers
+from homework_31.settings import FORBIDDEN_DOMAIN
 from users.models import User, Locations
+from users.validators import ForbiddenDomain
 
 
 class LocationsSerializer(serializers.ModelSerializer):
@@ -27,7 +30,8 @@ class UsersListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "first_name", "last_name", "username", "role", "age", "locations", "total_ads"]
+        fields = ["id", "first_name", "last_name", "username", "role", "age",
+                  "locations", "email", "birth_date", "total_ads"]
 
 
 class UsersDetailSerializer(serializers.ModelSerializer):
@@ -41,11 +45,12 @@ class UsersDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "first_name", "last_name", "username", "role", "age", "locations"]
+        exclude = ["location_id"]
 
 
 class UsersCreateSerializer(serializers.ModelSerializer):
     """Сериализатор создания пользователя"""
+    YEAR = 365.2425
     id = serializers.IntegerField(required=False)
     locations = serializers.SlugRelatedField(
         required=False,
@@ -54,10 +59,23 @@ class UsersCreateSerializer(serializers.ModelSerializer):
         slug_field="name",
         source="location_id",
     )
+    email = serializers.EmailField(validators=[ForbiddenDomain(FORBIDDEN_DOMAIN)])
+    age = serializers.SerializerMethodField(method_name="get_age")
 
     class Meta:
         model = User
         exclude = ["location_id"]
+
+    # Получаем возраст пользователя
+    def get_age(self, obj):
+        return int((date.today() - obj.birth_date).days / self.YEAR)
+
+    # Проверяем возраст пользователя
+    def validate_birth_date(self, value: date):
+        age = (date.today() - value).days / self.YEAR
+        if age < 9:
+            raise serializers.ValidationError("Регистрация пользователя младше 9 лет запрещена")
+        return value
 
     def is_valid(self, *, raise_exception=False):
         self._locations = self.initial_data.pop("locations")

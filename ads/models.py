@@ -1,3 +1,4 @@
+from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 from users.models import User
 
@@ -5,6 +6,7 @@ from users.models import User
 class Categories(models.Model):
     """Модель категории"""
     name = models.CharField(max_length=300)
+    slug = models.CharField(max_length=10, validators=[MinLengthValidator(5)], null=True, unique=True)
 
     objects = models.Manager()
 
@@ -18,10 +20,10 @@ class Categories(models.Model):
 
 class Ads(models.Model):
     """Модель объявления"""
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, validators=[MinLengthValidator(10)])
     author_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ads", null=True)
-    price = models.IntegerField()
-    description = models.CharField(max_length=2000)
+    price = models.IntegerField(validators=[MinValueValidator(0)])
+    description = models.CharField(max_length=2000, blank=True)
     is_published = models.BooleanField()
     image = models.ImageField(upload_to="pictures", null=True, blank=True)
     category_id = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True)
